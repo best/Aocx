@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>账户管理 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                {include file="user@public/sidebar"}
+                <div class="col-md-8 col-xl-9">
+                    <div class="card">
+                        <form data-provide="validation" data-disable="true" ic-post-to="/user/account/postUpdatePwd.html" ic-target="#form-target" ic-verb="POST" ic-trigger-on="default" ic-deps="ignore">
+                            <h4 class="card-title">修改密码</h4>
+                            <div class="card-body">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="oPassword">原密码</label>
+                                        <input type="password" class="form-control" placeholder="请填写现在所使用的密码"
+                                               id="oPassword" name="oPassword" required>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="nPassword">新密码</label>
+                                        <input type="password" class="form-control" placeholder="请填写要使用的新密码" id="nPassword"  name="nPassword" required>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="rPassword">重复新密码</label>
+                                        <input type="password" class="form-control" placeholder="请重复新密码，密码长度8-20"
+                                               id="rPassword"  data-match="#nPassword" required>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <button class="btn btn-w-md btn-outline btn-primary"
+                                                type="submit">更新密码
+                                        </button>
+                                        <button class="btn btn-w-md btn-flat btn-secondary"
+                                                onclick="window.location.href='/user/findpass'">我忘记了密码
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="form-target"></div>
+                    </div>
+
+                    <div class="card">
+                        <h4 class="card-title">修改用户名</h4>
+                        <div class="card-body">
+                            <div class="col-md-8">
+                                <p>
+                                    <small>更改用户名之后，以前的用户名会被释放，旧用户名无法再用来登陆</small>
+                                </p>
+                                <button class="btn btn-w-md btn-outline btn-primary" id="modifyUsername">修改用户名</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="card bg-pale-danger">
+                        <h4 class="card-title" style="color: #cb2431">删除账户</h4>
+                        <div class="card-body">
+                            <div class="col-md-8">
+                                <p>一旦你删除了账户，将没有任何方式撤销删除，请认真考虑。</p>
+                                <button class="btn btn-w-md btn-bold btn-danger">删除账户</button>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script>
+    $('#modifyUsername').on('click', function(){
+        swal({
+            title: '你确定要修改用户名吗?',
+            text: "修改之后原用户名将被释放，无法再用于登陆!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '是，继续修改!',
+            cancelButtonText: '取消'
+        }).then(function() {
+            swal({
+                title: '修改用户名',
+                type: 'info',
+                html:
+                '<form data-provide="validation" data-disable="true" action="/user/account/postUpdateUsername" method="post">' +
+                    '<div class="form-group">' +
+                        '<input type="text" class="form-control" placeholder="请填写要使用的新用户名" id="username" name="username" data-remote="/user/account/getUsername" data-minlength="2"  maxlength="12" required>' +
+                        '<div class="invalid-feedback"></div>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<button class="btn btn-w-md btn-outline btn-primary" type="submit">更新用户名</button>' +
+                    '</div>' +
+                '</form>'
+                ,
+                showCloseButton: true,
+                showCancelButton: false,
+                showConfirmButton: false
+            });
+        })
+    });
+</script>
+
+</body>
+</html>

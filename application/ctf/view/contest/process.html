@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>{$contest.name} - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <header class="header">
+        <div class="container">
+            <div class="header-info" style="margin: 30px 0;">
+                <div class="left">
+                    <br>
+                    <h2 class="header-title"><strong>{$contest.name}</strong>
+                    </h2>
+                </div>
+            </div>
+
+            {include file="ctf@public/contest_header"}
+        </div>
+    </header><!--/.header -->
+
+    <div class="main-content" style="padding-top:0px">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="card card-shadowed">
+
+                    <div class="card-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs nav-justified nav-tabs-info">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Web">Web</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Pwn">Pwn</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Crypto">Crypto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Reverse">Reverse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Misc">Misc</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="Web">
+                                <div class="row gap-y gap-2">
+                                    {foreach $problems['Web'] as $vo }
+                                    <div class="media flex-column hover-shadow-2" data-shuffle="item" data-groups="{$vo.category}">
+                                        <p>
+                                            {switch $vo.level}
+                                            {case 1|2|3}<span class="avatar avatar-sm bg-success">{/case}
+                                        {case 4|5|6}<span class="avatar avatar-sm bg-info">{/case}
+                                        {case 7|8|9}<span class="avatar avatar-sm bg-warning">{/case}
+                                        {default /} <span class="avatar avatar-sm bg-success">
+                                    {/switch}
+
+                                    {switch $vo.category}
+                                        {case Web}w{/case}
+                                        {case Pwn}p{/case}
+                                        {case Crypto}c{/case}
+                                        {case Reverse}r{/case}
+                                        {case Misc}m{/case}
+                                        {default /}
+                                    {/switch}
+                                    </span>
+                                    <a class="title hover-primary" href="/ctf/{$contest.nickname}/{$vo.category}/{$vo.id}"><strong>{$vo.title}</strong></a>
+                                        </p>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Pwn">
+                                <div class="row gap-y gap-2">
+                                    {foreach $problems['Pwn'] as $vo }
+                                    <div class="media flex-column hover-shadow-2" data-shuffle="item" data-groups="{$vo.category}">
+                                        <p>
+                                            {switch $vo.level}
+                                            {case 1|2|3}<span class="avatar avatar-sm bg-success">{/case}
+                                        {case 4|5|6}<span class="avatar avatar-sm bg-info">{/case}
+                                        {case 7|8|9}<span class="avatar avatar-sm bg-warning">{/case}
+                                        {default /} <span class="avatar avatar-sm bg-success">
+                                    {/switch}
+
+                                    {switch $vo.category}
+                                        {case Web}w{/case}
+                                        {case Pwn}p{/case}
+                                        {case Crypto}c{/case}
+                                        {case Reverse}r{/case}
+                                        {case Misc}m{/case}
+                                        {default /}
+                                    {/switch}
+                                    </span>
+                                    <a class="title hover-primary" href="/ctf/{$contest.nickname}/{$vo.category}/{$vo.id}"><strong>{$vo.title}</strong></a>
+                                        </p>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Crypto">
+                                <div class="row gap-y gap-2">
+                                    {foreach $problems['Crypto'] as $vo }
+                                    <div class="media flex-column hover-shadow-2" data-shuffle="item" data-groups="{$vo.category}">
+                                        <p>
+                                            {switch $vo.level}
+                                            {case 1|2|3}<span class="avatar avatar-sm bg-success">{/case}
+                                        {case 4|5|6}<span class="avatar avatar-sm bg-info">{/case}
+                                        {case 7|8|9}<span class="avatar avatar-sm bg-warning">{/case}
+                                        {default /} <span class="avatar avatar-sm bg-success">
+                                    {/switch}
+
+                                    {switch $vo.category}
+                                        {case Web}w{/case}
+                                        {case Pwn}p{/case}
+                                        {case Crypto}c{/case}
+                                        {case Reverse}r{/case}
+                                        {case Misc}m{/case}
+                                        {default /}
+                                    {/switch}
+                                    </span>
+                                    <a class="title hover-primary" href="/ctf/{$contest.nickname}/{$vo.category}/{$vo.id}"><strong>{$vo.title}</strong></a>
+                                        </p>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Reverse">
+                                <div class="row gap-y gap-2">
+                                    {foreach $problems['Reverse'] as $vo }
+                                    <div class="media flex-column hover-shadow-2" data-shuffle="item" data-groups="{$vo.category}">
+                                        <p>
+                                            {switch $vo.level}
+                                            {case 1|2|3}<span class="avatar avatar-sm bg-success">{/case}
+                                        {case 4|5|6}<span class="avatar avatar-sm bg-info">{/case}
+                                        {case 7|8|9}<span class="avatar avatar-sm bg-warning">{/case}
+                                        {default /} <span class="avatar avatar-sm bg-success">
+                                    {/switch}
+
+                                    {switch $vo.category}
+                                        {case Web}w{/case}
+                                        {case Pwn}p{/case}
+                                        {case Crypto}c{/case}
+                                        {case Reverse}r{/case}
+                                        {case Misc}m{/case}
+                                        {default /}
+                                    {/switch}
+                                    </span>
+                                    <a class="title hover-primary" href="/ctf/{$contest.nickname}/{$vo.category}/{$vo.id}"><strong>{$vo.title}</strong></a>
+                                        </p>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Misc">
+                                <div class="row gap-y gap-2">
+                                    {foreach $problems['Misc'] as $vo }
+                                    <div class="media flex-column hover-shadow-2" data-shuffle="item" data-groups="{$vo.category}">
+                                        <p>
+                                            {switch $vo.level}
+                                            {case 1|2|3}<span class="avatar avatar-sm bg-success">{/case}
+                                        {case 4|5|6}<span class="avatar avatar-sm bg-info">{/case}
+                                        {case 7|8|9}<span class="avatar avatar-sm bg-warning">{/case}
+                                        {default /} <span class="avatar avatar-sm bg-success">
+                                    {/switch}
+
+                                    {switch $vo.category}
+                                        {case Web}w{/case}
+                                        {case Pwn}p{/case}
+                                        {case Crypto}c{/case}
+                                        {case Reverse}r{/case}
+                                        {case Misc}m{/case}
+                                        {default /}
+                                    {/switch}
+                                    </span>
+                                    <a class="title hover-primary" href="/ctf/{$contest.nickname}/{$vo.category}/{$vo.id}"><strong>{$vo.title}</strong></a>
+                                        </p>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

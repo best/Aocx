@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{$category}类型CTF题目训练，安徽大学在线CTF竞赛平台">
+    <meta name="keywords" content="{$category},训练,安徽大学在线CTF竞赛平台">
+
+    <title>{$category}训练 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+    <style>
+        .btn-outline.btn-primary.active{
+            background-color: #33cabb;
+            border-color: #33cabb;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-info" href="/">首页</a></li>
+                <li class="breadcrumb-item"><a class="text-info" href="/practice">题库</a></li>
+                <li class="breadcrumb-item active">{$category}</li>
+            </ol>
+            <div class="card shadow-1">
+
+                <div class="card-body">
+
+                    <div data-provide="shuffle">
+
+                        <br><br>
+
+                        <div class="media-grid media-grid-bordered" data-shuffle="list">
+
+                            {volist name="problem" id="vo"}
+                            <div class="media flex-column hover-shadow-2" data-shuffle="item" data-groups="{$vo.category}">
+                                <p>
+                                    {switch $vo.level}
+                                    {case 1|2|3}<span class="avatar avatar-sm bg-success">{/case}
+                                        {case 4|5|6}<span class="avatar avatar-sm bg-info">{/case}
+                                        {case 7|8|9}<span class="avatar avatar-sm bg-warning">{/case}
+                                        {default /} <span class="avatar avatar-sm bg-success">
+                                    {/switch}
+
+                                    {switch $vo.category}
+                                        {case Web}w{/case}
+                                        {case Pwn}p{/case}
+                                        {case Crypto}c{/case}
+                                        {case Reverse}r{/case}
+                                        {case Misc}m{/case}
+                                        {default /}
+                                    {/switch}
+                                    </span>
+                                    <a class="title hover-primary" href="/practice/{$vo.category}/{$vo.id}"><strong>{$vo.title}</strong></a>
+                                </p>
+                                <div class="box shuffle-item shuffle-item--visible" data-reviews="138"></div>
+                            </div>
+                            {/volist}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

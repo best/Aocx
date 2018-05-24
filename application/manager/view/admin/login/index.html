@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="安徽大学AHUSEC-CTF在线竞赛系统-管理后台登陆页面">
+    <meta name="keywords" content="登陆, 管理登陆">
+
+    <title>管理登陆 &mdash; AHUSEC</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,300i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="row min-h-fullscreen center-vh p-20 m-0">
+    <div class="col-12">
+        <div class="card card-shadowed px-50 py-30 w-400px mx-auto" style="max-width: 100%">
+            <h5 class="text-uppercase">管理登陆</h5>
+            <br>
+            <form data-provide="validation" class="form-type-material" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" name="username" data-minlength="2" required>
+                    <label for="username">用户名</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <label for="password">密码</label>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-bold btn-block btn-info" type="submit">登陆</button>
+                </div>
+            </form>
+            <div id="form-target"></div>
+
+        </div>
+    </div>
+
+    <footer class="col-12 align-self-end text-center fs-13">
+        <p class="mb-0"><small>Copyright © 2018 <a href="https://www.ahusec.cn">AHUSEC</a>. All rights reserved.</small></p>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"  data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

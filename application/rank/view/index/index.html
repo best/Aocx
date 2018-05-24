@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Rank榜 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix" data-provide="pace">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-separated" data-provide="datatables" data-searching="false" data-ordering="false" data-page-length='50'>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>User</th>
+                                    <th>Bio</th>
+                                    <th>Site</th>
+                                    <th>Rank</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="rank" id="vo" key="i"}
+                                <tr>
+                                    <th scope="row">{$i}</th>
+                                    <td>
+                                        <div>
+                                            {empty name="$vo.user_info['user_extra_info']['avatar']"}
+                                            <img class="avatar" src="/static/img/avatar/default.jpg" alt="avatar">
+                                            {else /}
+                                            <img class="avatar" style="max-width: 30px;max-height: 30px;" src="{$vo.user_info['user_extra_info']['avatar']}" alt="avatar">
+                                            {/empty}
+                                            {$vo.user_info['username']}
+                                        </div>
+                                    </td>
+                                    <td>{$vo.user_info['user_extra_info']['bio']}</td>
+                                    <td>{$vo.user_info['user_extra_info']['site']}</td>
+                                    <td>{$vo.score}</td>
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+</body>
+</html>

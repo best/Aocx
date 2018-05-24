@@ -1,0 +1,45 @@
+<header class="topbar topbar-expand-lg">
+    <div class="topbar-left">
+        <span class="topbar-btn topbar-menu-toggler"><i>☰</i></span>
+        <h3 class="topbar-title">AHUSEC</h3>
+
+        <div class="topbar-divider d-none d-xl-block"></div>
+
+        <nav class="topbar-navigation">
+            <ul class="menu">
+
+                <li class="menu-item {eq name="$Request.controller" value="Index"} active{/eq}">
+                    <a class="menu-link" href="/manager">
+                        <span class="title">管理后台</span>
+                    </a>
+                </li>
+
+                <li class="menu-item {eq name="$Request.controller" value="Problem.practice"} active{/eq}">
+                    <a class="menu-link" href="/manager/problem/practice">
+                        <span class="title">题库题目管理</span>
+                    </a>
+                </li>
+
+                <li class="menu-item {eq name="$Request.controller" value="Problem.contest"} active{/eq}">
+                    <a class="menu-link" href="/manager/problem/contest">
+                        <span class="title">竞赛题目管理</span>
+                    </a>
+                </li>
+
+                <li class="menu-item {eq name="$Request.controller" value="Contest"} active{/eq}">
+                    <a class="menu-link" href="/manager/contest">
+                        <span class="title">竞赛管理</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="topbar-right">
+        <li class="menu-item">
+            <a class="menu-link" href="/manager/admin/logout">
+                <span class="title">退出登陆</span>
+            </a>
+        </li>
+    </div>
+</header>

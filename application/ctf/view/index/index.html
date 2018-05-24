@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>竞赛 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            {volist name="contestList" id="vo"}
+            <div class="card b-1 hover-shadow-2 mb-20">
+                <a class="media card-body" href="/ctf/{$vo.nickname}">
+
+                    <div class="media-body">
+                        <div class="mb-2">
+                            <span class="fs-20 pr-16">{$vo.name}</span>
+                            {if ( $vo.status == '未开始报名') OR ( $vo.status == '即将比赛') }
+                            <span class="badge badge-info text-uppercase no-radius ls-1 opacity-75">{$vo.status}</span>
+                            {elseif ( $vo.status == '正在报名') OR ( $vo.status == '正在比赛')  /}
+                            <span class="badge badge-success text-uppercase no-radius ls-1 opacity-75">{$vo.status}</span>
+                            {else /}
+                            <span class="badge badge-warning text-uppercase no-radius ls-1 opacity-75">{$vo.status}</span>
+                            {/if}
+
+
+                        </div>
+                        <small class="fs-16 fw-300 ls-1">{$vo.type} • {$vo.organizer}</small>
+                    </div>
+
+                    <div class="media-right text-right d-none d-md-block">
+                        <p class="fs-14 text-fade mb-12"><i class="fa fa-map-marker pr-1"></i> {$vo.place}</p>
+                        <span class="text-fade fs-12">参赛人数: <strong>{$vo.enrollNum}</strong></span>
+                    </div>
+                </a>
+
+                <footer class="card-footer flexbox align-items-center">
+                    <div>
+                        {if ( $vo.status == '未开始报名') OR ( $vo.status == '正在报名') }
+                        <span>报名时间：{$vo.enroll_start_time} - {$vo.enroll_end_time}</span>
+                        {else /}
+                        <span>比赛时间：{$vo.start_time} - {$vo.end_time}</span>
+                        {/if}
+                    </div>
+                    <div class="card-show">
+                        {if $vo.status == '正在报名'  /}
+                        <a class="btn btn-xs fs-10 btn-bold btn-success" href="/user/apply">参与报名</a>
+                        {elseif $vo.status == '正在比赛'  /}
+                        <a class="btn btn-xs fs-10 btn-bold btn-success" href="#">进入比赛</a>
+                        {else /}
+                        {/if}
+                    </div>
+                </footer>
+            </div>
+            {/volist}
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

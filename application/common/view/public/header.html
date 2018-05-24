@@ -1,0 +1,74 @@
+<!-- Topbar -->
+<header class="topbar topbar-expand-lg">
+    <div class="container">
+        <div class="topbar-left">
+            <span class="topbar-btn topbar-menu-toggler"><i>&#9776;</i></span>
+            <h3 class="topbar-title">AHUSEC</h3>
+            <div class="topbar-divider d-none d-md-block"></div>
+
+            <nav class="topbar-navigation">
+                <ul class="menu">
+
+                    <li class="menu-item {eq name=":request()->module()" value="index"} active{/eq}">
+                        <a class="menu-link" href="/">
+                            <span class="title">首页</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {eq name=":request()->module()" value="practice"} active{/eq}">
+                        <a class="menu-link" href="/practice">
+                            <span class="title">题库</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {eq name=":request()->module()" value="ctf"} active{/eq}">
+                        <a class="menu-link" href="/ctf">
+                            <span class="title">竞赛</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item {eq name=":request()->module()" value="rank"} active{/eq}">
+                        <a class="menu-link" href="/rank">
+                            <span class="title">排行榜</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="topbar-right">
+            {if session('ticket') == null }
+            <div>
+                <a class="btn btn-sm btn-primary" href="/user/login">登陆</a>
+                <a class="btn btn-sm btn-outline btn-primary" href="/user/register">注册</a>
+            </div>
+            {else /}
+            <ul class="topbar-btns">
+                <li class="dropdown">
+                    <span class="topbar-btn" data-toggle="dropdown">
+                        {notempty name="Think.session.avatar"}
+                            <img class="avatar" src="{$Think.session.avatar}" alt="@{$Think.session.username}">
+                        {/notempty}
+                        {$Think.session.username}
+                    </span>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="/user/profile"><i class="ti-user"></i> 个人中心</a>
+                        <a class="dropdown-item" href="/user/history"><i class="ti-write"></i> 答题记录</a>
+                        <a class="dropdown-item" href="/user/apply"><i class="ti-direction"></i> 竞赛报名</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/user/logout"><i class="ti-power-off"></i> 退出</a>
+                    </div>
+                </li>
+            </ul>
+            {/if}
+
+            <!--
+
+            -->
+
+        </div>
+
+    </div>
+</header>
+<!-- END Topbar -->

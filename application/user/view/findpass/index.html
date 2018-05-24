@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="安徽大学AHUSEC-CTF在线竞赛系统-找回密码">
+    <meta name="keywords" content="找回密码，重置密码">
+
+    <title>找回密码 &mdash; AHUSEC</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,300i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="row min-h-fullscreen center-vh p-20 m-0">
+
+    <div class="col-12">
+        <div class="card card-shadowed px-50 py-30 w-400px mx-auto" style="max-width: 100%">
+            <h5 class="text-uppercase">找回密码</h5>
+            <br>
+            <form class="form-type-material" data-provide="wizard" novalidate="true" ic-post-to="/user/findpass/postCheck.html" ic-target="#form-target" ic-verb="POST" ic-trigger-on="default" ic-deps="ignore">
+                <ul class="nav nav-process nav-process-circle">
+                    <li class="nav-item">
+                        <span class="nav-title">确认账号</span>
+                        <a class="nav-link" data-toggle="tab" href="#wizard-validate-1"></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <span class="nav-title">验证邮箱</span>
+                        <a class="nav-link" data-toggle="tab" href="#wizard-validate-2"></a>
+                    </li>
+                </ul>
+
+                <hr class="w-30px">
+
+                <div class="tab-content">
+
+                    <div class="tab-pane fade active show" id="wizard-validate-1" data-provide="validation">
+                        <div class="form-group">
+                            <label>用户名</label>
+                            <input class="form-control" type="text" name="username" required>
+                            <div class="form-control-feedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="wizard-validate-2" data-provide="validation">
+                        <div class="form-group">
+                            <label>注册邮箱</label>
+                            <input class="form-control" type="email" name="email" required>
+                            <div class="form-control-feedback"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <div class="flexbox">
+                    <button class="btn btn-secondary" data-wizard="prev" type="button">上一步</button>
+                    <button class="btn btn-secondary" data-wizard="next" type="button">下一步</button>
+                    <button class="btn btn-primary d-none" data-wizard="finish" type="submit">提交</button>
+                </div>
+            </form>
+            <div id="form-target"></div>
+        </div>
+
+        <p class="text-center text-muted fs-13 mt-20">已经想起密码了? <a class="text-primary fw-500" href="/user/login">登陆</a></p>
+    </div>
+
+
+    <footer class="col-12 align-self-end text-center fs-13">
+        <p class="mb-0"><small>Copyright © 2018 <a href="https://www.ahusec.cn">AHUSEC</a>. All rights reserved.</small></p>
+    </footer>
+</div>
+
+
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"  data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

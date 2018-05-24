@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    setTimeout('window.location="/user/profile"',2000)
+</script>
+<script type="text/javascript">
+swal({
+  title: "{$message}",
+  text: "对话框将在两秒钟后关闭!",
+  type: "error",
+  timer: 2000,
+}).then((result) => {
+    location.href = "/user/profile";
+})
+</script> 

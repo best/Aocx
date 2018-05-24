@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive admin dashboard and web application ui kit. ">
+    <meta name="keywords" content="coming, soon, landing">
+
+    <title>邮件验证 &mdash; AHUSEC</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,300i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="h-fullscreen bg-img text-center" data-overlay-light="4">
+
+<div class="row min-h-fullscreen center-vh p-20 m-0">
+    <div class="col-12">
+        <h1 class="pt-60 mb-20 fw-100 fs-50"><strong>AHUSEC</strong></h1>
+        <div class="animated pulse pt-60 mb-35" id="animationSandbox"><h2 class="fw-100 fs-30" style="color: #15c377">注册邮箱验证成功！</h2></div>
+        <h3 class="mb-20">欢迎你注册安徽大学在线竞赛系统</h3>
+        <p class="mx-auto" style="max-width: 700px"><small>页面将会在五秒后跳转，如果页面未跳转，请点击此处<a href="/user/login">立即跳转</a>。</small></p>
+
+        <br><br>
+    </div>
+
+    <footer class="col-12 align-self-end text-center fs-13">
+        <p class="mb-0"><small>Copyright © 2018 <a href="https://www.ahusec.cn">AHUSEC</a>. All rights reserved.</small></p>
+    </footer>
+
+</div>
+
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"  data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script type="text/javascript">
+    setTimeout('window.location="/user/login"',5000)
+</script>
+
+</body>
+</html>

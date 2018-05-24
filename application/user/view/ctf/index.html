@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>竞赛管理 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                {include file="user@public/sidebar"}
+                <div class="col-md-8 col-xl-9">
+                    <div class="card">
+                        <h4 class="card-title">竞赛报名管理</h4>
+
+                        <div class="card-body">
+                            {empty name="contest_list"}
+                            <div class="callout callout-success" role="alert">
+                                <h5>当前没有竞赛报名记录！</h5>
+                            </div>
+                            {else /}
+                            <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables"  data-scroll-collapse="true" data-paging="false" data-searching="false" data-ordering="false">
+                                <thead>
+                                <tr>
+                                    <th>竞赛名称</th>
+                                    <th>竞赛类型</th>
+                                    <th>竞赛状态</th>
+                                    <th>报名时间</th>
+                                    <th>&nbsp;&nbsp;取消报名</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name="contest_list" id="vo"}
+                                <tr>
+                                    <td>{$vo.contest.name}</td>
+                                    <td>{$vo.contest.type}</td>
+                                    <td>{$vo.contest.status}</td>
+                                    <td>{$vo.create_time}</td>
+                                    {if ( $vo.contest.status == '正在报名') }
+                                    <td><a class="btn btn-xs btn-pure btn-danger" href="/user/ctf/cancelContest?id={$vo.cid}">取消报名</a></td>
+                                    {else /}
+                                    <td><button class="btn btn-xs btn-pure btn-success">不在报名时间</button></td>
+                                    {/if}
+                                </tr>
+                                {/volist}
+                            </table>
+                            {/empty}
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

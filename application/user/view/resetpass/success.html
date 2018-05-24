@@ -1,0 +1,13 @@
+<script type="text/javascript">
+  setTimeout('window.location="/user/login"',3000)
+</script>
+<script type="text/javascript">
+swal({
+  title: "密码重置成功！",
+  text: "将会在三秒钟后跳转!",
+  type: "success",
+  timer: 3000,
+}).then((result) => {
+    location.href = "/user/login";
+})
+</script> 

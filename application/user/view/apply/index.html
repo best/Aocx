@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>竞赛报名 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                {include file="user@public/sidebar"}
+                <div class="col-md-8 col-xl-9">
+                    {empty name="contestList"}
+                    <div class="callout callout-success" role="alert">
+                        <h5>当前没有处在报名阶段的竞赛</h5>
+                    </div>
+                    {else /}
+                    {volist name="contestList" id="vo"}
+                    <div class="card b-1 hover-shadow-2 mb-20">
+                        <a class="media card-body">
+
+                            <div class="media-body">
+                                <div class="mb-2">
+                                    <span class="fs-20 pr-16">{$vo.name} • {$vo.type}</span>
+                                </div>
+                                <small class="fs-16 fw-300 ls-1">报名时间：{$vo.enroll_start_time} - {$vo.enroll_end_time}</small>
+                            </div>
+
+                            <div class="media-right text-right d-none d-md-block">
+                                <p class="fs-14 text-fade mb-12"><i class="fa fa-map-marker pr-1"></i> {$vo.place}</p>
+                                <span class="text-fade fs-12">报名人数: <strong>{$vo.enrollNum}</strong></span>
+                            </div>
+                        </a>
+
+                        <footer class="card-footer flexbox align-items-center">
+                            <button class="btn btn-xs btn-round btn-success" ic-get-from="/user/apply/contest/{$vo.id}" ic-target="#button-target" ic-deps="ignore">立即报名</button>
+                            <div id="button-target"></div>
+                        </footer>
+                    </div>
+                    {/volist}
+                    {/empty}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

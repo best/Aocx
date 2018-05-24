@@ -1,0 +1,35 @@
+<div class="col-md-4 col-xl-3">
+    <div class="card shadow-1">
+        <ul class="nav nav-lg nav-pills flex-column">
+            <li class="nav-item {eq name=":request()->controller()" value="Profile"} active{/eq}">
+                <i class="ti-user"></i>
+                <a class="nav-link" href="/user/profile">个人中心</a>
+            </li>
+
+            <li class="nav-item {eq name=":request()->controller()" value="Account"} active{/eq}">
+                <i class="ti-id-badge"></i>
+                <a class="nav-link" href="/user/account">账户管理</a>
+            </li>
+
+            <li class="nav-item {eq name=":request()->controller()" value="History"} active{/eq}">
+                <i class="ti-write"></i>
+                <a class="nav-link" href="/user/history">答题记录</a>
+            </li>
+
+            <li class="nav-item {eq name=":request()->controller()" value="Ctf"} active{/eq}">
+                <i class="ti-cup"></i>
+                <a class="nav-link" href="/user/ctf">竞赛管理</a>
+            </li>
+
+            <li class="nav-item {eq name=":request()->controller()" value="Apply"} active{/eq}">
+                <i class="ti-direction"></i>
+                <a class="nav-link" href="/user/apply">竞赛报名</a>
+            </li>
+
+            <!--<li class="nav-item {eq name=":request()->controller()" value="Statistic"} active{/eq}">-->
+                <!--<i class="ti-bar-chart"></i>-->
+                <!--<a class="nav-link" href="/user/statistic">统计数据</a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>

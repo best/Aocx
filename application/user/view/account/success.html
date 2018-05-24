@@ -1,0 +1,13 @@
+<script type="text/javascript">
+  setTimeout('window.location="/user/account"',3000)
+</script>
+<script type="text/javascript">
+swal({
+  title: "{$message}",
+  text: "将会在三秒钟后跳转!",
+  type: "success",
+  timer: 3000,
+}).then((result) => {
+    location.href = "/user/account";
+})
+</script> 

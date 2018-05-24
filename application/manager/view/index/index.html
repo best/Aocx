@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="安徽大学在线CTF竞赛平台,CTF竞赛平台">
+
+    <title>管理后台首页 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+{include file="manager@public/topbar"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="row">
+            <div class="col-12 h-30px"></div>
+            <div class="col-6 col-lg-3">
+                <div class="card card-body bg-primary">
+                    <div class="flexbox">
+                        <span class="ti-user fs-40"></span>
+                        <span class="fs-40 fw-100">{$count.user}</span>
+                    </div>
+                    <div class="text-right">用户</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="card card-body text-center bg-info">
+                    <div class="fs-40 fw-100">{$count.distribute_uid}</div>
+                    <div>可注册用户数量</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="card card-body text-center">
+                    <div class="fs-40 fw-100">{$count.contest}</div>
+                    <div>竞赛</div>
+                </div>
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+                <div class="card card-body text-center">
+                    <div class="fs-40 fw-100">{$count.user_contest}</div>
+                    <div>竞赛参与</div>
+                </div>
+            </div>
+
+
+            <div class="col-12 h-50px"></div>
+
+            <div class="col-6 col-lg-3">
+                <div class="card card-body bg-secondary">
+                    <div class="flexbox">
+                        <span class="ti-slice fs-40"></span>
+                        <span class="fs-40">{$count.problem}</span>
+                    </div>
+                    <div class="text-right">题目</div>
+                </div>
+            </div>
+
+
+
+            <div class="col-6 col-lg-3">
+                <div class="card card-body">
+                    <div class="flexbox">
+                        <span class="ti-eraser text-purple fs-40"></span>
+                        <span class="fs-40 fw-100">{$count.problem_practice}</span>
+                    </div>
+                    <div class="text-right">训练题目</div>
+                </div>
+            </div>
+
+
+
+            <div class="col-6 col-lg-3">
+                <div class="card card-body">
+                    <div class="flexbox">
+                        <span class="ti-pencil-alt2 text-danger fs-40"></span>
+                        <span class="fs-40">{$count.problem_contest}</span>
+                    </div>
+                    <div class="text-right">竞赛题目</div>
+                </div>
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+                <div class="card card-body text-center bg-success">
+                    <div class="fs-40 fw-100">{$count.practice_post}</div>
+                    <div>训练参与</div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-12 h-50px"></div>
+        </div>
+    </div>
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

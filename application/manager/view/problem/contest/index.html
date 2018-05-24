@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="安徽大学在线CTF竞赛平台,CTF竞赛平台">
+
+    <title>题库题目管理 - 管理后台 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+{include file="manager@public/topbar"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7">
+                    <div class="card shadow-1">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>题目名称</th>
+                                <th class="w-100px text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {volist name="problems" id="vo"}
+                            <tr>
+                                {switch $i%5 }
+                                {case 0 }
+                                <td><span class="badge badge-ring badge-danger mr-2 mt-2"></span> {$vo.title}</td>
+                                    {/case}
+                                {case 1}
+                                <td><span class="badge badge-ring badge-warning mr-2 mt-2"></span> {$vo.title}</td>
+                                    {/case}
+                                {case 2}
+                                <td><span class="badge badge-ring badge-info mr-2 mt-2"></span> {$vo.title}</td>
+                                    {/case}
+                                {case 3}
+                                <td><span class="badge badge-ring badge-purple mr-2 mt-2"></span> {$vo.title}</td>
+                                    {/case}
+                                {case 4}
+                                <td><span class="badge badge-ring badge-dark mr-2 mt-2"></span> {$vo.title}</td>
+                                    {/case}
+                                {default /}
+                                <td><span class="badge badge-ring badge-pink mr-2 mt-2"></span> {$vo.title}</td>
+                                {/switch}
+                                <td>
+                                    <nav class="nav gap-2 fs-16">
+                                        <a class="nav-link hover-primary cat-edit" href="#" data-provide="tooltip" title="Edit" data-perform="edit" data-target="/manager/problem/contest/edit/{$vo.id}"><i class="ti-pencil"></i></a>
+                                        <a class="nav-link hover-danger cat-delete" href="#" data-provide="tooltip" title="Delete" data-perform="delete" data-target="/manager/problem/contest/delete/{$vo.id}"><i class="ti-trash"></i></a>
+                                    </nav>
+                                </td>
+                            </tr>
+                            {/volist}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-5">
+
+                    <form class="card shadow-1" action="/manager/problem/contest/add" method="post">
+                        <h5 class="card-title"><strong>创建新题目</strong></h5>
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="require">标题</label>
+                                <input class="form-control" type="text" name="title" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">内容</label>
+                                <input class="form-control" type="text" name="content" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">解题链接</label>
+                                <input class="form-control" type="text" name="url" required>
+                                <small>请填写以http/https开头的URL</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">分数</label>
+                                <input class="form-control" type="text" name="score" required>
+                                <small>请填写大于0的数字</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="level" class="require">题目难度等级</label>
+                                <select class="form-control" id="level" data-provide="selectpicker" name="level">
+                                    <option>1</option><option>2</option><option>3</option>
+                                    <option>4</option><option>5</option><option>6</option>
+                                    <option>7</option><option>8</option><option>9</option>
+                                </select>
+                                <small>请选择题目难度等级</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contest" class="require">所属竞赛</label>
+                                <select class="form-control" id="contest" data-provide="selectpicker" name="contest">
+                                    {volist name="contests" id="vo"}
+                                    <option value="{$vo.id}">{$vo.name}</option>
+                                    {/volist}
+                                </select>
+                                <small>请选择该题目属于哪个竞赛</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">Flag</label>
+                                <input class="form-control" type="text" name="answer" required>
+                                <small>请填写题目的答案</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category" class="require">分类</label>
+                                <select class="form-control" id="category" data-provide="selectpicker" name="category">
+                                    <option>Web</option>
+                                    <option>Pwn</option>
+                                    <option>Crypto</option>
+                                    <option>Reverse</option>
+                                    <option>Misc</option>
+                                </select>
+                                <small>请选择题目分类</small>
+                            </div>
+                        </div>
+
+                        <footer class="card-footer text-right">
+                            <button class="btn btn-primary">Save</button>
+                        </footer>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script src="/static/js/manager/script.js"></script>
+
+</body>
+</html>

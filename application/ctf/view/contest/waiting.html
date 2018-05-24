@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>{$contest.name} - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/vendor/timecircles/TimeCircles.css" />
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <header class="header" style="margin-bottom: 0px;">
+        <div class="container">
+            <div class="header-info" style="margin: 30px 0;">
+                <div class="left">
+                    <br>
+                    <h2 class="header-title"><strong>{$contest.name}</strong>
+                        <!--<small class="subtitle">{$contest.type} • {$contest.organizer} • {$contest.status}</small>-->
+                    </h2>
+                </div>
+            </div>
+
+            {include file="ctf@public/contest_header"}
+        </div>
+    </header><!--/.header -->
+
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card shadow-1">
+                        <header class="card-header">
+                            <h4 class="card-title">
+                                距离竞赛开始还有
+                            </h4>
+                        </header>
+                        <div class="card-body">
+                            <div id="DateCountdown" data-date="{$contest.start_time}" style="width: 600px; height: 150px; box-sizing: border-box;"></div>
+                            <!--TODO 倒计时结束之后自动刷新页面-->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                    <div class="card shadow-1">
+                        <header class="card-header">
+                            竞赛时间表
+                        </header>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>竞赛开始时间</td>
+                                    <td>{$contest.start_time}</td>
+                                </tr>
+                                <tr>
+                                    <td>竞赛结束时间</td>
+                                    <td>{$contest.end_time}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script type="text/javascript" src="/static/vendor/timecircles/TimeCircles.js"></script>
+<script>
+    $("#DateCountdown").TimeCircles();
+</script>
+
+</body>
+</html>

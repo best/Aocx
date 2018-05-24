@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive admin dashboard and web application ui kit. ">
+    <meta name="keywords" content="coming, soon, landing">
+
+    <title>跳转提示 &mdash; AHUSEC</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,300i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="h-fullscreen bg-img text-center" data-overlay-light="4">
+
+<div class="row min-h-fullscreen center-vh p-20 m-0">
+    <div class="col-12">
+        <h1 class="pt-60 mb-20 fw-100 fs-50"><strong>AHUSEC</strong></h1>
+        <?php switch ($code) {?>
+        <?php case 1:?>
+        <div class="animated pulse pt-60 mb-35" id="animationSandbox"><h2 class="fw-100 fs-30" style="color: #15c377"><strong>Success!</strong></h2></div>
+        <h3 class="mb-20"><?php echo(strip_tags($msg));?></h3>
+        <?php break;?>
+        <?php case 0:?>
+        <div class="animated pulse pt-60 mb-35" id="animationSandbox"><h2 class="fw-100 fs-30" style="color: #ff101a"><strong>Error!</strong></h2></div>
+        <h3 class="mb-20"><?php echo(strip_tags($msg));?></h3>
+        <?php break;?>
+        <?php } ?>
+        <p class="mx-auto" style="max-width: 700px"><small>页面将会自动跳转，如果页面未跳转，请点击此处 <a id="href" href="<?php echo($url);?>">立即跳转</a> 等待时间： <b id="wait"><?php echo($wait);?></b></small></p>
+
+        <br><br>
+    </div>
+
+    <footer class="col-12 align-self-end text-center fs-13">
+        <p class="mb-0"><small>Copyright © 2018 <a href="https://www.ahusec.cn">AHUSEC</a>. All rights reserved.</small></p>
+    </footer>
+
+</div>
+
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"  data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        var wait = document.getElementById('wait'),
+            href = document.getElementById('href').href;
+        var interval = setInterval(function(){
+            var time = --wait.innerHTML;
+            if(time <= 0) {
+                location.href = href;
+                clearInterval(interval);
+            };
+        }, 1000);
+    })();
+</script>
+
+</body>
+</html>

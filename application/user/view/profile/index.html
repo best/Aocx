@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>个人中心 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                {include file="user@public/sidebar"}
+                <div class="col-md-8 col-xl-6">
+                    <form class="card form-type-line" ic-post-to="/user/profile/postCheck.html" ic-target="#form-target" ic-verb="POST" ic-trigger-on="default" ic-deps="ignore">
+                        <h4 class="card-title fw-400">个人中心</h4>
+
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="name">姓名</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{$name}">
+                            </div>
+                                <div class="form-group">
+                                    <label for="xuehao">学号</label>
+                                    <input type="text" class="form-control" id="xuehao" name="xuehao" value="{$xuehao}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="site">个人站点</label>
+                                    <input type="text" class="form-control" id="site" name="site" value="{$site}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bio">个人简介</label>
+                                    <textarea class="form-control" id="bio" name="bio" rows="3">{$bio}</textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <footer class="card-footer text-right">
+                            <div class="form-group">
+                                <button class="btn btn-flat btn-primary" type="submit">保存更改</button>
+                            </div>
+                        </footer>
+                    </form>
+                    <div id="form-target"></div>
+
+                </div>
+
+                <div class="col-md-8 col-xl-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-white card-body bg-img text-center py-50"">
+                            <img class="avatar avatar-xxl avatar-bordered" src="{$avatar}">
+                        </div>
+                    </div>
+                    <div class="text-center bt-1 border-light p-12">
+                        <input type="file" accept="image/*" name="image" style="font-size: 0;opacity: 0;width: 100%;height: 100%;position: absolute;left: 0;top: 0;"/>
+                        <span class="btn">更改头像</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {include file="common@public/footer"}
+</main>
+<!-- Scripts -->
+<script src="/static/js/core.min.js"  data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script src="/static/js/ajaxfileupload.js"></script>
+<script>
+    $('input[type="file"]').ajaxfileupload({
+        action: '/user/profile/avatarPost',
+        onComplete: function(response) {
+            if(response.status == true){
+                setTimeout('window.location="/user/profile"',3000)
+                swal({
+                    title: "上传成功！",
+                    text: "将会在三秒钟后刷新!",
+                    type: "success",
+                    timer: 3000
+                }).then((result) => {
+                    location.href = "/user/profile";
+                })
+            }else {
+                setTimeout('window.location="/user/profile"',3000)
+                swal({
+                    title: '上传失败！',
+                    text: response.message,
+                    type: "error",
+                    timer: 3000,
+                }).then((result) => {
+                    location.href = "/user/profile";
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>

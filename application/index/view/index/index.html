@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>AHUSEC - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+<canvas style="z-index: 1;position : absolute;"></canvas>
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <br><br>
+                    <h1 class="text-primary font-dosis fw-500 ls-2 display-4">AHUSEC</h1>
+                    <br>
+                    <h2 class="font-dosis fw-300">安徽大学在线CTF竞赛平台</h2>
+                    <h3>AHU Online CTF Competition Platform</h3>
+                    <p class="lead fw-400 opacity-60"></p>
+                </div>
+                    <hr class="w-200px border-primary">
+                    <div class="col-12 gap-items-2 text-center" style="z-index: 2;">
+                        <button class="btn btn-w-md btn-outline btn-primary" onclick="window.location.href='/practice'">训练中心</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-w-md btn-outline btn-success" onclick="window.location.href='/ctf'">竞赛中心</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-w-md btn-outline btn-info" onclick="window.location.href='/rank'">Rank榜</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div style="z-index: 2">
+    {include file="common@public/footer"}
+    </div>
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script src="/static/js/canvas.js"></script>
+</body>
+</html>

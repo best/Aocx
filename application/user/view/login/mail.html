@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    swal({
+        title: '注册邮箱还未验证',
+        type: 'info',
+        html:
+        '你需要完成邮箱验证才能登陆，' +
+        '<a href="/user/mail/resend">点击此处</a> ' +
+        '重新发送验证邮件',
+        showCloseButton: true,
+        showCancelButton: true,
+        confirmButtonText:
+            '重发验证邮件',
+        cancelButtonText:
+            '放弃登陆'
+    }).then((result) => {
+        location.href = "/user/mail/resend";
+    })
+</script>

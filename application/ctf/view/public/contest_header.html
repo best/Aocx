@@ -1,0 +1,25 @@
+<div class="header-action">
+    <nav class="nav">
+        {if ( $contest['status'] == '即将比赛') }
+        <a class="nav-link {eq name=":request()->controller()" value="Contest"} active{/eq}" href="/ctf/{$contest.nickname}">{$contest.nickname}</a>
+        <!--<a class="nav-link {eq name=":request()->controller()" value="Info"} active{/eq}" href="/ctf/{$contest.nickname}/info">竞赛详情</a>-->
+        <!--<a class="nav-link {eq name=":request()->controller()" value="Rule"} active{/eq}" href="/ctf/{$contest.nickname}/rule">竞赛规则</a>-->
+        {elseif ( $contest['status'] == '正在比赛') /}
+        <a class="nav-link {eq name=":request()->controller()" value="Contest"} active{/eq}
+            {eq name=":request()->controller()" value="Problem"} active{/eq}
+            " href="/ctf/{$contest.nickname}">{$contest.nickname}</a>
+        <a class="nav-link {eq name=":request()->controller()" value="Notice"} active{/eq}" href="/ctf/{$contest.nickname}/notice">竞赛公告</a>
+        <a class="nav-link {eq name=":request()->controller()" value="Rank"} active{/eq}" href="/ctf/{$contest.nickname}/rank">Rank榜</a>
+        <!--<a class="nav-link {eq name=":request()->controller()" value="Help"} active{/eq}" href="/ctf/{$contest.nickname}/help">问题反馈</a>-->
+        {elseif ( $contest['status'] == '未开始报名') ||  ( $contest['status'] == '正在报名') /}
+        <a class="nav-link {eq name=":request()->controller()" value="Contest"} active{/eq}" href="/ctf/{$contest.nickname}">{$contest.nickname}</a>
+
+        {elseif ( $contest['status'] == '比赛结束') /}
+        <a class="nav-link {eq name=":request()->controller()" value="Contest"} active{/eq}" href="/ctf/{$contest.nickname}">{$contest.nickname} - 竞赛结束</a>
+
+        {else /}
+
+        {/if}
+
+    </nav>
+</div>

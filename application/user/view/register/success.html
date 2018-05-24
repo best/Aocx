@@ -1,0 +1,13 @@
+<script type="text/javascript">
+  setTimeout('window.location="/user/login"',3000)
+</script>
+<script type="text/javascript">
+swal({
+  title: "注册成功，注册验证邮件已发送！",
+  text: "将会在三秒钟后跳转到登陆页面!",
+  type: "success",
+  timer: 3000,
+}).then((result) => {
+    location.href = "/user/login";
+})
+</script> 

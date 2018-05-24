@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="安徽大学AHUSEC-CTF在线竞赛系统-用户登陆页面">
+    <meta name="keywords" content="登陆, 用户登陆">
+
+    <title>登陆 &mdash; AHUSEC</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,300i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="row min-h-fullscreen center-vh p-20 m-0">
+    <div class="col-12">
+        <div class="card card-shadowed px-50 py-30 w-400px mx-auto" style="max-width: 100%">
+            <h5 class="text-uppercase">登陆</h5>
+            <br>
+            <!-- data-provide="validation" -->
+            <form data-provide="validation" class="form-type-material" ic-post-to="/user/login/postCheck.html" ic-target="#form-target" ic-verb="POST" ic-trigger-on="default" ic-deps="ignore">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" name="username" data-minlength="2" required>
+                    <label for="username">注册邮箱/用户名/UserID</label>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <label for="password">密码</label>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="form-group flexbox flex-column flex-md-row">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="checkbox" checked>
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">记住登陆</span>
+                    </label>
+
+                    <a class="text-muted hover-primary fs-13 mt-2 mt-md-0" href="/user/findpass.html">忘记密码？</a>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-bold btn-block btn-primary" type="submit">登陆</button>
+                </div>
+            </form>
+            <div id="form-target"></div>
+
+        </div>
+        <p class="text-center text-muted fs-13 mt-20">没有账号? <a class="text-primary fw-500" href="/user/register.html">注册用户</a></p>
+    </div>
+
+    <footer class="col-12 align-self-end text-center fs-13">
+        <p class="mb-0"><small>Copyright © 2018 <a href="https://www.ahusec.cn">AHUSEC</a>. All rights reserved.</small></p>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"  data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

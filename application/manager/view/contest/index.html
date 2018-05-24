@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="安徽大学在线CTF竞赛平台,CTF竞赛平台">
+
+    <title>竞赛管理- 管理后台 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+{include file="manager@public/topbar"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7">
+                    <div class="card shadow-1">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>竞赛名称</th>
+                                <th class="w-100px text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {volist name="contests" id="vo"}
+                            <tr>
+                                {switch $i%5 }
+                                {case 0 }
+                                <td><span class="badge badge-ring badge-danger mr-2 mt-2"></span> {$vo.name}</td>
+                                    {/case}
+                                {case 1}
+                                <td><span class="badge badge-ring badge-warning mr-2 mt-2"></span> {$vo.name}</td>
+                                    {/case}
+                                {case 2}
+                                <td><span class="badge badge-ring badge-info mr-2 mt-2"></span> {$vo.name}</td>
+                                    {/case}
+                                {case 3}
+                                <td><span class="badge badge-ring badge-purple mr-2 mt-2"></span> {$vo.name}</td>
+                                    {/case}
+                                {case 4}
+                                <td><span class="badge badge-ring badge-dark mr-2 mt-2"></span> {$vo.name}</td>
+                                    {/case}
+                                {default /}
+                                <td><span class="badge badge-ring badge-pink mr-2 mt-2"></span> {$vo.name}</td>
+                                {/switch}
+                                <td>
+                                    <nav class="nav gap-2 fs-16">
+                                        <a class="nav-link hover-primary cat-edit" href="#" data-provide="tooltip" title="Edit" data-perform="edit" data-target="/manager/contest/edit/{$vo.id}"><i class="ti-pencil"></i></a>
+                                        <a class="nav-link hover-danger cat-delete" href="#" data-provide="tooltip" title="Delete" data-perform="delete" data-target="/manager/contest/delete/{$vo.id}"><i class="ti-trash"></i></a>
+                                    </nav>
+                                </td>
+                            </tr>
+                            {/volist}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-5">
+
+                    <form class="card shadow-1" action="/manager/contest/add" method="post">
+                        <h5 class="card-title"><strong>创建新竞赛</strong></h5>
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="require">竞赛名称</label>
+                                <input class="form-control" type="text" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">竞赛别名</label>
+                                <input class="form-control" type="text" name="nickname" required>
+                                <small>请填写英文，别名用于显示在URL中</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">主办方</label>
+                                <input class="form-control" type="text" name="organizer" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">举办地点</label>
+                                <input class="form-control" type="text" name="place" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">报名开始时间</label>
+                                <input class="form-control" type="text" name="enroll_start_time" placeholder="时间格式：2018-01-01 21:00:00" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">报名结束时间</label>
+                                <input class="form-control" type="text" name="enroll_end_time" placeholder="时间格式：2018-01-10 00:00:00" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">竞赛开始时间</label>
+                                <input class="form-control" type="text" name="start_time" placeholder="时间格式：2018-01-11 09:00:00" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="require">竞赛结束时间</label>
+                                <input class="form-control" type="text" name="end_time" placeholder="时间格式：2018-01-11 18:00:00" required>
+                            </div>
+
+                        </div>
+
+                        <footer class="card-footer text-right">
+                            <button class="btn btn-primary">Save</button>
+                        </footer>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+<script src="/static/js/manager/script.js"></script>
+
+</body>
+</html>

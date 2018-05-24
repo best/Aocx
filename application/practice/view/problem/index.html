@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{$problem.category}题目：{$problem.title}，{$problem.content}">
+    <meta name="keywords" content="安徽大学在线CTF竞赛平台,CTF竞赛平台,{$problem.category},{$problem.title}">
+
+    <title>{$problem.category} - {$problem.title} - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-info" href="/">首页</a></li>
+                <li class="breadcrumb-item"><a class="text-info" href="/practice">题库</a></li>
+                <li class="breadcrumb-item"><a class="text-info" href="/practice/{$problem.category}">{$problem.category}</a></li>
+                <li class="breadcrumb-item active">{$problem.title}</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card shadow-1">
+                        <header class="card-header">
+                            <h4 class="card-title">
+                                {$problem.title}
+                                <small class="subtitle">
+                                    题目来源：{$problem.problem_extra_info.source}
+                                    <span class="divider-dot"></span>
+                                    分数：{$problem.score}
+                                    <span class="divider-dot"></span>
+                                    难度：
+                                    {switch $problem.level}
+                                    {case 1|2|3}简单{/case}
+                                    {case 4|5|6}中等{/case}
+                                    {case 7|8|9}困难{/case}
+                                    {default /}无
+                                    {/switch}
+                                </small>
+                            </h4>
+                        </header>
+                        <div class="card-body">
+                            <div class="flexbox flex-justified">
+                                    <span>
+                                        浏览次数：{$problem.problem_extra_info.views}
+                                    </span>
+                                    <span>
+                                        参与人数：{$problem.problem_extra_info.participants}
+                                    </span>
+                                    <span>
+                                        提交次数：{$problem.problem_extra_info.post_times}
+                                    </span>
+                                    <span>
+                                        GetFlag：{$problem.problem_extra_info.correct_times}
+                                    </span>
+                                    <span>
+                                        成功率：
+                                        {if $problem.problem_extra_info.participants == 0}未知
+                                        {else /}{$problem.problem_extra_info.correct_times/$problem.problem_extra_info.participants*100}%
+                                        {/if}
+                                    </span>
+                            </div>
+                            <hr class="hr-sm w-300px">
+                            <p>{$problem.content}</p>
+                            <p>解题链接：<a href="{$problem.url}" target="_blank">{$problem.url}</a></p>
+                            <hr>
+                            {empty name="status"}
+                                <form class="form-type-round" data-provide="validation" data-disable="false" ic-post-to="/practice/judge" ic-target="#form-target" ic-verb="POST" ic-trigger-on="default" ic-deps="ignore">
+                                    <div class="input-group">
+                                        <input type="hidden" name="category" class="form-control" value="{$problem.category}">
+                                        <input type="hidden" name="pid" class="form-control" value="{$problem.id}">
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" name="flag" class="form-control" placeholder="Flag" required>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-outline btn-primary" type="submit">Go!</button>
+                                        </span>
+                                    </div>
+                                </form>
+                                <div id="form-target"></div>
+                                <br>
+                            {else /}
+                                <div class="alert alert-success" role="alert">
+                                    本题你已经成功GetFlag了！
+                                </div>
+                            {/empty}
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card shadow-1">
+                        <header class="card-header">
+                            本题Rank榜
+                        </header>
+                        <div class="card-body">
+                            {empty name="rank"}
+                                <p>本题尚未有人Get Flag，快来占榜吧～</p>
+                            {else /}
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>RANK</th>
+                                        <th>昵称</th>
+                                        <th>时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {volist name="rank" id="vo"}
+                                    <tr>
+                                        <th scope="row">{$i}</th>
+                                        <td>{$vo.username}</td>
+                                        <td>{$vo.create_time}</td>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                </table>
+                            {/empty}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>答题记录 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                {include file="user@public/sidebar"}
+                <div class="col-md-8 col-xl-9">
+
+                    <div class="card">
+                        <h4 class="card-title">题库训练答题记录</h4>
+
+                        <div class="card-body">
+                            {empty name="status"}
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">你还没有任何成功的答题记录!</h4>
+                                <p>前往题库训练<a href="/practice">->>点击这里<<-</a>去做做题目吧～</p>
+                            </div>
+                            {else /}
+                            <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables" data-ajax="/user/history/rankList"data-scroll-collapse="true" data-paging="true" data-searching="false" data-ordering="false">
+                                <thead>
+                                <tr>
+                                    <th>题目</th>
+                                    <th>分类</th>
+                                    <th>难度</th>
+                                    <th>得分</th>
+                                    <th>时间</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            {/empty}
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

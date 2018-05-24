@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="安徽大学在线CTF竞赛平台,CTF竞赛平台">
+
+    <title>竞赛公告 - {$contest.name} - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <header class="header">
+        <div class="container">
+            <div class="header-info" style="margin: 30px 0;">
+                <div class="left">
+                    <br>
+                    <h2 class="header-title"><strong>{$contest.name}</strong>
+                    </h2>
+                </div>
+            </div>
+
+            {include file="ctf@public/contest_header"}
+        </div>
+    </header><!--/.header -->
+
+    <div class="main-content" style="padding-top:0px">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="col-12">
+                    <div class="card">
+                        <ol class="timeline timeline-activity timeline-sm timeline-content-right w-100 py-20 pr-20">
+                            {empty name="notice_list"}
+                            <div class="col-12">
+                                <div class="alert alert-primary" role="alert">
+                                    没有通知公告～
+                                </div>
+                            </div>
+                            {/empty}
+                            {volist name="notice_list" id="vo"}
+                            <li class="timeline-block">
+                                    {switch $i%5 }
+                                        {case 0 }
+                                            <div class="timeline-point timeline-point-primary">
+                                            <span class="badge badge-ring badge-primary"></span>
+                                        {/case}
+                                        {case 1}
+                                            <div class="timeline-point timeline-point-info">
+                                            <span class="badge badge-ring badge-info"></span>
+                                        {/case}
+                                        {case 2}
+                                            <div class="timeline-point timeline-point-danger">
+                                            <span class="badge badge-ring badge-danger"></span>
+                                        {/case}
+                                        {case 3}
+                                            <div class="timeline-point timeline-point-yellow">
+                                            <span class="badge badge-ring badge-yellow"></span>
+                                        {/case}
+                                        {case 4}
+                                            <div class="timeline-point timeline-point-puple">
+                                            <span class="badge badge-ring puple"></span>
+                                        {/case}
+                                        {default /} <div class="timeline-point timeline-point-puple">
+                                                    <span class="badge badge-ring puple"></span>
+                                    {/switch}
+                                </div>
+                                <div class="timeline-content">
+                                    <time datetime="{$vo.create_time}">{$vo.create_time}</time>
+                                    <p></p>
+                                    <p><span class="h6">{$vo.title}</span></p>
+                                    <p>{$vo.content}</p>
+
+                                </div>
+                            </li>
+                            {/volist}
+
+                        </ol>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

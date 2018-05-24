@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>题库 - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+    <style>
+        .btn-outline.btn-primary.active{
+            background-color: #33cabb;
+            border-color: #33cabb;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <!--
+    <header class="header">
+        <div class="container">
+            <div class="header-info">
+                <div class="left">
+                    <h2 class="header-title">
+                        <strong>题库训练</strong>
+                        <small class="subtitle">题目类型：WEB安全(Web) 溢出(Pwn) 密码学(Crypto) 逆向(Reverse) 杂项(Misc)</small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    -->
+    <div class="main-content">
+        <div class="container">
+            <div class="card shadow-1">
+
+                <div class="card-body">
+
+                    <div data-provide="shuffle">
+                        <div class="text-center" data-shuffle="filter">
+                            <button class="btn btn-w-md btn-outline btn-primary" data-shuffle="button">全部</button>
+                            <button class="btn btn-w-md btn-outline btn-primary" data-shuffle="button" data-group="Web">WEB安全</button>
+                            <button class="btn btn-w-md btn-outline btn-primary" data-shuffle="button" data-group="Pwn">溢出</button>
+                            <button class="btn btn-w-md btn-outline btn-primary" data-shuffle="button" data-group="Crypto">密码学</button>
+                            <button class="btn btn-w-md btn-outline btn-primary" data-shuffle="button" data-group="Reverse">逆向</button>
+                            <button class="btn btn-w-md btn-outline btn-primary" data-shuffle="button" data-group="Misc">杂项</button>
+                        </div>
+
+                        <br><br>
+
+                        <div class="media-grid media-grid-bordered" data-shuffle="list">
+
+                            {volist name="problem" id="vo"}
+                            <div class="media flex-column hover-shadow-2" data-shuffle="item" data-groups="{$vo.category}">
+                                <p>
+                                    {switch $vo.level}
+                                        {case 1|2|3}<span class="avatar avatar-sm bg-success">{/case}
+                                        {case 4|5|6}<span class="avatar avatar-sm bg-info">{/case}
+                                        {case 7|8|9}<span class="avatar avatar-sm bg-warning">{/case}
+                                        {default /} <span class="avatar avatar-sm bg-success">
+                                    {/switch}
+
+                                    {switch $vo.category}
+                                        {case Web}w{/case}
+                                        {case Pwn}p{/case}
+                                        {case Crypto}c{/case}
+                                        {case Reverse}r{/case}
+                                        {case Misc}m{/case}
+                                        {default /}
+                                    {/switch}
+                                    </span>
+                                    <a class="title hover-primary" href="/practice/{$vo.category}/{$vo.id}"><strong>{$vo.title}</strong></a>
+                                </p>
+                            </div>
+                            {/volist}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>

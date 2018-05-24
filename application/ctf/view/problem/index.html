@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{$problem.category}题目：{$problem.title}，{$problem.content}">
+    <meta name="keywords" content="安徽大学在线CTF竞赛平台,CTF竞赛平台,{$problem.category},{$problem.title}">
+
+    <title>{$contest.name} - {$problem.category} - {$problem.title} - 安徽大学在线CTF竞赛平台</title>
+
+    <!-- Styles -->
+    <link href="/static/css/core.min.css" rel="stylesheet">
+    <link href="/static/css/app.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="topbar-unfix">
+
+{include file="common@public/header"}
+<!-- Main container -->
+<main>
+    <header class="header">
+        <div class="container">
+            <div class="header-info" style="margin: 30px 0;">
+                <div class="left">
+                    <br>
+                    <h2 class="header-title"><strong>{$contest.name}</strong>
+                    </h2>
+                </div>
+            </div>
+
+            {include file="ctf@public/contest_header"}
+        </div>
+    </header><!--/.header -->
+
+    <div class="main-content" style="padding-top:0px">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-info" href="/ctf">竞赛</a></li>
+                <li class="breadcrumb-item"><a class="text-info" href="/ctf/{$contest.nickname}">{$contest.name}</a></li>
+                <li class="breadcrumb-item active">{$problem.title}</li>
+            </ol>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card shadow-1">
+                        <header class="card-header">
+                            <h4 class="card-title">
+                                {$problem.title}
+                                <small class="subtitle">
+                                    分数：{$problem.score}
+                                    <span class="divider-dot"></span>
+                                    难度：
+                                    {switch $problem.level}
+                                    {case 1|2|3}简单{/case}
+                                    {case 4|5|6}中等{/case}
+                                    {case 7|8|9}困难{/case}
+                                    {default /}无
+                                    {/switch}
+                                </small>
+                            </h4>
+                        </header>
+                        <div class="card-body">
+                            <p>{$problem.content}</p>
+                            <p>解题链接：<a href="{$problem.url}" target="_blank">{$problem.url}</a></p>
+                            <hr>
+                            {empty name="status"}
+                            <form class="form-type-round" data-provide="validation" data-disable="false" ic-post-to="/ctf/judge" ic-target="#form-target" ic-verb="POST" ic-trigger-on="default" ic-deps="ignore">
+                                <div class="input-group">
+                                    <input type="hidden" name="contest_nickname" class="form-control" value="{$contest.nickname}">
+                                    <input type="hidden" name="category" class="form-control" value="{$problem.category}">
+                                    <input type="hidden" name="pid" class="form-control" value="{$problem.id}">
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="flag" class="form-control" placeholder="Flag" required>
+                                    <span class="input-group-btn">
+                                            <button class="btn btn-outline btn-primary" type="submit">Go!</button>
+                                        </span>
+                                </div>
+                            </form>
+                            <div id="form-target"></div>
+                            <br>
+                            {else /}
+                            <div class="alert alert-success" role="alert">
+                                本题你已经成功GetFlag了！
+                            </div>
+                            {/empty}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow-1">
+                        <div class="card-body">
+                            <div class="flexbox">
+                                <h5>已获取</h5>
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle no-caret" data-toggle="dropdown"></span>
+                                </div>
+                            </div>
+
+                            <div class="text-center my-2">
+                                <div class="fs-60 fw-400 text-info">{$score}</div>
+                                <span class="fw-400 text-muted">Rank</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {include file="common@public/footer"}
+</main>
+
+<!-- Scripts -->
+<script src="/static/js/core.min.js" data-provide="sweetalert"></script>
+<script src="/static/js/app.min.js"></script>
+<script src="/static/js/script.min.js"></script>
+
+</body>
+</html>
